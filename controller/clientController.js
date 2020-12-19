@@ -20,6 +20,7 @@ exports.getClient = async function (req, res, next) {
 };
 
 exports.addNewClient = async function (req, res, next) {
+  console.log(req.body);
   try {
     var content = await ClientService.addNewClient(req);
     return res.status(200).json({
