@@ -18,7 +18,14 @@ exports.getClientByid = async function (id) {
 };
 exports.addNewClient = async function (document) {
   try {
-    var content = await client.create(document);
+    var content = await client.create(document.body);
+    content.images.push("hhhy");
+
+    for (const file of document.files) {
+      console.log(file.filename)
+      content.images.push(file.filename);
+    }
+  
     return content;
   } catch (e) {
     throw Error("Error while creating new client");

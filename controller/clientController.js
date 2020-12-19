@@ -21,7 +21,7 @@ exports.getClient = async function (req, res, next) {
 
 exports.addNewClient = async function (req, res, next) {
   try {
-    var content = await ClientService.addNewClient(req.body);
+    var content = await ClientService.addNewClient(req);
     return res.status(200).json({
       status: 200,
       data: content,
