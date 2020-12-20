@@ -50,6 +50,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
+
     return (
       <div id="registerBg">
         <div className="box mt-5">
