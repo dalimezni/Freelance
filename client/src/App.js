@@ -33,14 +33,13 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          </Switch>
-        </div>
+        <Switch>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        </Switch>
+
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
       </Router>
     </Provider>
   );

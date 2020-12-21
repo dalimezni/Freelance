@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../redux/actions/authActions";
+import ClientsList from "./ClientsList";
 
 class Dashboard extends Component {
   onLogoutClick = (e) => {
@@ -13,7 +14,7 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-      <>
+      <div>
         <div className="container">
           <div className="row mt-3 mb-3">
             <h4 className="mr-auto mt-auto mb-auto">
@@ -27,18 +28,14 @@ class Dashboard extends Component {
                 marginTop: "1rem",
               }}
               onClick={this.onLogoutClick}
-              className="btn btn-large btn-primary waves-effect waves-light hoverable blue accent-3 mt-auto mb-auto"
+              className="btn btn-large btn-dark waves-effect waves-light hoverable blue accent-3 mt-auto mb-auto"
             >
               Logout
             </button>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
-            <div className="col">it works </div>
-          </div>
-        </div>
-      </>
+        <ClientsList></ClientsList>
+      </div>
     );
   }
 }

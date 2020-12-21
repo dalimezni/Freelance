@@ -47,52 +47,59 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div id="loginBg">
-        <div className="box">
+      <div className="auth-wrapper">
+        <div className="auth-inner">
           <form noValidate onSubmit={this.onSubmit} autoComplete="off">
-            <div className="inputBox">
+            <h3>Sign In</h3>
+
+            <div className="form-group">
+              <label>Email address</label>
               <input
+                type="email"
+                placeholder="Enter email"
                 autoComplete="off"
                 required
                 onChange={this.onChange}
                 value={this.state.email}
                 error={errors.email}
                 id="email"
-                type="email"
-                className={classnames("", {
+                className={classnames("form-control", {
                   invalid: errors.email || errors.emailnotfound,
                 })}
               />
-              <label htmlFor="email">Email</label>
+
               <span className="red-text">
                 {errors.email}
                 {errors.emailnotfound}
               </span>
             </div>
-            <div className="inputBox">
+
+            <div className="form-group">
+              <label>Password</label>
               <input
+                type="password"
+                placeholder="Enter password"
                 required
                 onChange={this.onChange}
                 value={this.state.password}
                 error={errors.password}
                 id="password"
-                type="password"
-                className={classnames("", {
+                className={classnames("form-control", {
                   invalid: errors.password || errors.passwordincorrect,
                 })}
               />
-              <label htmlFor="password">Password</label>
               <span className="red-text">
                 {errors.password}
                 {errors.passwordincorrect}
               </span>
             </div>
-            <div className="m-auto">
-              <input type="submit" name="submit" value="Login" />
-              <p className="text-white mt-2">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
-            </div>
+
+            <button type="submit" className="btn btn-primary btn-block">
+              Submit
+            </button>
+            {/* <p className="forgot-password text-right">
+          Forgot <a href="#">password?</a>
+        </p> */}
           </form>
         </div>
       </div>

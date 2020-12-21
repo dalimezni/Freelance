@@ -52,77 +52,82 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div id="registerBg">
-        <div className="box mt-5">
+      <div className="auth-wrapper">
+        <div className="auth-inner">
           <form noValidate onSubmit={this.onSubmit} autoComplete="off">
-            <div className="inputBox">
+            <h3>Sign Up</h3>
+
+            <div className="form-group">
+              <label>First name</label>
               <input
+                type="text"
+                className="form-control"
+                placeholder="First name"
                 autoComplete="off"
                 required
                 onChange={this.onChange}
                 value={this.state.name}
                 error={errors.name}
                 id="name"
-                type="text"
               />
-              <label htmlFor="name">Name</label>
               <span className="red-text">{errors.name}</span>
             </div>
-            <div className="inputBox">
+
+            <div className="form-group">
+              <label>Email address</label>
               <input
+                type="email"
+                placeholder="Enter email"
                 autoComplete="off"
                 required
                 onChange={this.onChange}
                 value={this.state.email}
                 error={errors.email}
                 id="email"
-                type="email"
-                className={classnames("", {
+                className={classnames("form-control", {
                   invalid: errors.email,
                 })}
               />
-              <label htmlFor="email">Email</label>
               <span className="red-text">{errors.email}</span>
             </div>
-            <div className="inputBox">
+
+            <div className="form-group">
+              <label>Password</label>
               <input
+                type="password"
+                placeholder="Enter password"
                 autoComplete="off"
                 required
                 onChange={this.onChange}
                 value={this.state.password}
                 error={errors.password}
                 id="password"
-                type="password"
-                className={classnames("", {
+                className={classnames("form-control", {
                   invalid: errors.password,
                 })}
               />
-              <label htmlFor="password">Password</label>
               <span className="red-text">{errors.password}</span>
             </div>
-            <div className="inputBox">
+            <div className="form-group">
+              <label>Password</label>
               <input
+                type="password"
+                placeholder="Enter password"
                 autoComplete="off"
                 required
                 onChange={this.onChange}
                 value={this.state.password2}
                 error={errors.password2}
                 id="password2"
-                type="password"
-                className={classnames("", {
+                className={classnames("form-control", {
                   invalid: errors.password2,
                 })}
               />
-              <label htmlFor="password2">Confirm Password</label>
               <span className="red-text">{errors.password2}</span>
             </div>
-            <div className="">
-              <input type="submit" name="submit" value="Register" />
-
-              <p className="text-white mt-2">
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
-            </div>
+            <button type="submit" className="btn btn-primary btn-block">
+              Register
+            </button>
           </form>
         </div>
       </div>

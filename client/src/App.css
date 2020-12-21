@@ -1,157 +1,90 @@
-html {
-  background-color: lightgreen;
-}
-.App{background-color: lightgreen;}
-#landing {
-  width: 100%;
-  height: 90.5vh;
-}
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ============== Form Styling ========================= */
-.box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25rem;
-  padding: 2.5rem;
+* {
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 0.225rem;
 }
 
-.box h2 {
-  margin: 0 0 1.875rem;
-  padding: 0;
-  color: #fff;
-  text-align: center;
+body {
+  background: #1C8EF9 !important;
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
 }
 
-.box .inputBox {
-  position: relative;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
+  font-weight: 500;
+  font-family: 'Fira Sans', sans-serif;
 }
 
-.box .inputBox input {
+body,
+html,
+.App,
+#root,
+.auth-wrapper {
   width: 100%;
-  padding: 0.625rem 0;
-  font-size: 1rem;
-  color: #fff;
-  letter-spacing: 0.062rem;
-  margin-bottom: 1.875rem;
-  border: none;
-  border-bottom: 0.065rem solid #fff;
-  outline: none;
-  background: transparent;
+  height: 100%;
 }
 
-.box .inputBox label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.625rem 0;
-  font-size: 1rem;
-  color: #fff;
-  pointer-events: none;
-  transition: 0.5s;
+.navbar-light {
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 
-.box .inputBox input:focus~label,
-.box .inputBox input:valid~label,
-.box .inputBox input:not([value=""])~label {
-  top: -1.125rem;
-  left: 0;
-  color: #03a9f4;
-  font-size: 0.75rem;
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 
-.box input[type="submit"] {
-  border: none;
-  outline: none;
-  color: #fff;
-  background-color: #03a9f4;
-  padding: 0.625rem 1.25rem;
-  cursor: pointer;
-  border-radius: 0.312rem;
-  font-size: 1rem;
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
 }
 
-.box input[type="submit"]:hover {
-  background-color: #1cb1f5;
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
 }
 
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
 .red-text {
   color: red;
   margin-top: -100;
   margin-bottom: -100;
 }
-
-/* ======================================================== */
-
-
-/* === search box component */
-.search-box {
-  display: inline-block;
-  width: 100%;
-  border-radius: 3px;
-  padding: 4px 55px 4px 15px;
-  position: relative;
-  background: #fff;
-  border: 1px solid #ddd;
-  -webkit-transition: all 200ms ease-in-out;
-  -moz-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-
-.search-box.hovered,
-.search-box:hover,
-.search-box:active {
-  border: 1px solid #aaa;
-}
-
-.search-box input[type="text"] {
-  border: none;
-  box-shadow: none;
-  display: inline-block;
-  padding: 0;
-  background: transparent;
-}
-
-.search-box input[type="text"]:hover,
-.search-box input[type="text"]:focus,
-.search-box input[type="text"]:active {
-  box-shadow: none;
-}
-
-.search-box .search-btn {
-  position: absolute;
-  right: 2px;
-  top: 2px;
-  color: #aaa;
-  border-radius: 3px;
-  font-size: 21px;
-  padding: 5px 10px 1px;
-  -webkit-transition: all 200ms ease-in-out;
-  -moz-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-
-.search-box .search-btn:hover {
-  color: #fff;
-  background-color: #8fbe00;
-}
-
-/* end of searchbox component */

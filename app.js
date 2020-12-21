@@ -2,6 +2,7 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 const passport = require("passport");
+const cors = require("cors");
 
 // Passport middleware
 // Passport config
@@ -14,6 +15,15 @@ require("dotenv").config({
 });
 
 var app = express();
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      cb(null, process.env.NODE_ENV !== "production");
+    },
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
