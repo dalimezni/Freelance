@@ -7,18 +7,7 @@ var clientSchema = new mongoose.Schema({
   metier: String,
   ville: String,
   images: [String] ,
-  location: {
-    type: {
-        type: String, 
-        enum: ['Point']
-    },
-    coordinates: {
-        type: [Number]
-    }
-}
-
-},{
-    timestamps : true
-});
-
+  longitude: Number,
+  latitude: Number,
+},{timestamps : true});
 module.exports = mongoose.model("Client", clientSchema);

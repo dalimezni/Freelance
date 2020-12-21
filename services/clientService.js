@@ -20,7 +20,9 @@ exports.addNewClient = async function (document) {
   try {
     images = [];
     for (const file of document.files) {
+      console.log('file.filename');
       console.log(file.filename);
+      console.log("file.filename");
       images.push(file.filename);
     }
     console.log(images);
