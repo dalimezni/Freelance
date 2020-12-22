@@ -12,6 +12,8 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashoard";
+import "antd/dist/antd.css";
+import Reclam from "./components/dashboard/Reclam";
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
@@ -35,6 +37,7 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/Reclam/:id" exact component={Reclam} />
         </Switch>
 
         <Route exact path="/" component={Landing} />

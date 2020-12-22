@@ -1,78 +1,130 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+
 import clients from "../../services/clients";
+import { Table, Space, message } from "antd";
+import { Button } from "antd";
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+import { Popconfirm } from "antd";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { Paper, TableContainer } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 export default function ClientsList() {
-  const classes = useStyles();
   const [loading, setLoading] = React.useState(true);
-  const [faq, setFaqs] = React.useState([]);
+  const [client, setClients] = React.useState([]);
   const [isError, setIsError] = React.useState(false);
 
   React.useEffect(() => {
     clients
       .getClients()
-      .then((faq) => {
-        setFaqs(faq);
+      .then((client) => {
+        setClients(client);
         setLoading(false);
-        console.log(faq);
       })
       .catch((err) => {
         setLoading(true);
         setIsError(true);
       });
   }, []);
+
+  function confirm(e) {
+    console.log(e);
+    clients.deleteClient(e._id);
+    message.success({
+      content: "This is a prompt message with custom className and style",
+      className: "custom-class",
+      style: {
+        marginTop: "10ch",
+      },
+      duration: 2,
+    });
+    window.location.reload(false);
+  }
+  function cancel() {
+    message.error({
+      content: "nothing was deleted",
+      className: "custom-class",
+      style: {
+        marginTop: "10vh",
+      },
+      duration: 2,
+    });
+  }
+
+  const columns = [
+    {
+      title: "الإسم واللقب",
+      dataIndex: "nom",
+      key: "nom",
+      render: (text) => <p style={{ fontSize: "20px" }}>{text}</p>,
+    },
+    {
+      title: "رقم الهاتف",
+      dataIndex: "numTel",
+      key: "numTel",
+      render: (text) => <p style={{ fontSize: "20px" }}>{text}</p>,
+    },
+
+    {
+      title: "المنطقة",
+      dataIndex: "ville",
+      key: "ville",
+      render: (text) => <p style={{ fontSize: "20px" }}>{text}</p>,
+    },
+    {
+      title: "نوع الخدمة",
+      dataIndex: "metier",
+      key: "metier",
+      render: (text) => <p style={{ fontSize: "20px" }}>{text}</p>,
+    },
+
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <Space size="large">
+          <Link to={`/Reclam/${record._id}`}>
+            <Button type="primary">تفاصيل</Button>
+          </Link>
+          <Button type="primary">
+            {" "}
+            <Popconfirm
+              title="هل أنت متأكد من حذف هذا؟"
+              onConfirm={() => {
+                confirm(record);
+              }}
+              onCancel={() => {
+                cancel();
+              }}
+              okText="نعم"
+              cancelText="لا"
+            >
+              حذف
+            </Popconfirm>
+          </Button>
+        </Space>
+      ),
+    },
+  ];
+  if (isError) return "error";
+
   return (
     <div className="container">
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div style={{ marginTop: "15px" }}>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <TableContainer component={Paper}>
+            <Table
+              pagination={{
+                defaultPageSize: 5,
+              }}
+              columns={columns}
+              dataSource={client.data}
+            />
+          </TableContainer>
+        )}
+      </div>
     </div>
   );
 }

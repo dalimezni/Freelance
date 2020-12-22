@@ -20,7 +20,7 @@ exports.addNewClient = async function (document) {
   try {
     images = [];
     for (const file of document.files) {
-      console.log('file.filename');
+      console.log("file.filename");
       console.log(file.filename);
       console.log("file.filename");
       images.push(file.filename);
@@ -34,15 +34,15 @@ exports.addNewClient = async function (document) {
     throw Error("Error while creating new client");
   }
 };
-/* 
-exports.removeFaq = async function (id) {
+exports.removeClient = async function (id) {
   try {
-    var content = await faq.findByIdAndDelete(id);
+    var content = await client.findByIdAndDelete(id);
     return content;
   } catch (e) {
     throw Error("Error while deleting");
   }
 };
+/* 
 
 exports.updateFaq = async function (id, data) {
   try {

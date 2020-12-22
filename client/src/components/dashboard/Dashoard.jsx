@@ -18,7 +18,8 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row mt-3 mb-3">
             <h4 className="mr-auto mt-auto mb-auto">
-              <b>Bonjour,</b> {user.name.split(" ")[0]}
+              {user.name.split(" ")[0]}
+              &nbsp;<b>أهلا بك</b>
             </h4>
             <button
               style={{
@@ -30,7 +31,7 @@ class Dashboard extends Component {
               onClick={this.onLogoutClick}
               className="btn btn-large btn-dark waves-effect waves-light hoverable blue accent-3 mt-auto mb-auto"
             >
-              Logout
+              تسجيل خروج
             </button>
           </div>
         </div>

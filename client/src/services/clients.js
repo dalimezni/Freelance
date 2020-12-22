@@ -26,4 +26,16 @@ export default {
       .then((res) => res.data)
       .catch(errHandler);
   },
+  deleteClient(id) {
+    return service
+      .delete("/remove/" + id)
+      .then((res) => res.data)
+      .catch(errHandler);
+  },
+  getClientById(id) {
+    return service
+      .get("/search/" + id)
+      .then((res) => res.data)
+      .catch(errHandler);
+  },
 };

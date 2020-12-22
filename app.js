@@ -24,6 +24,7 @@ app.use(
     credentials: true,
   })
 );
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(
