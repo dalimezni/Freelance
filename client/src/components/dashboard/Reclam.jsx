@@ -2,10 +2,9 @@ import React from "react";
 import { Button } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import clients from "../../services/clients";
-import { Card, Col, Row } from "antd";
+import { Card } from "antd";
 import { CircularProgress } from "@material-ui/core";
 import Carousel from "react-bootstrap/Carousel";
-import Map from "./GeoMap";
 import GeoMap from "./GeoMap";
 export default function Reclam(props) {
   // eslint-disable-next-line no-unused-vars
@@ -49,38 +48,32 @@ export default function Reclam(props) {
             العودة إلى القائمة
           </Button>
         </Link>
-        <div style={{ marginBottom: "20px" }} className="site-card-wrapper">
-          <Row gutter={16}>
-            <Col span={8}>
-              <Card title="الإسم واللقب" bordered={false}>
-                {client.nom}
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="رقم الهاتف	" bordered={false}>
-                {client.numTel}
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="نوع الخدمة	" bordered={false}>
-                {client.metier}
-              </Card>
-            </Col>
-          </Row>
-        </div>
-        <div style={{ marginBottom: "20px" }} className="site-card-wrapper">
-          <Row gutter={16}>
-            <Col span={12}>
-              <Card title="المنطقة" bordered={false}>
-                {client.ville}
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card title="التعليق" bordered={false}>
-                {client.commentaire}
-              </Card>
-            </Col>
-          </Row>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "20px",
+          }}
+          className="site-card-wrapper"
+        >
+          <Card title="الإسم واللقب" bordered={false}>
+            {client.nom}
+          </Card>
+
+          <Card title="رقم الهاتف	" bordered={false}>
+            {client.numTel}
+          </Card>
+
+          <Card title="نوع الخدمة	" bordered={false}>
+            {client.metier}
+          </Card>
+          <Card title="المنطقة" bordered={false}>
+            {client.ville}
+          </Card>
+
+          <Card title="التعليق" bordered={false}>
+            {client.commentaire}
+          </Card>
         </div>
 
         <div style={{ marginBottom: "20px" }} className="site-card-wrapper">
